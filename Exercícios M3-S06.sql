@@ -20,3 +20,31 @@ INSERT INTO Produto(Id, Descricao, Status, Cadastro, QuantidadeEmEstoque) VALUES
 INSERT INTO Produto(Id, Descricao, Status, Cadastro, QuantidadeEmEstoque) VALUES(10, 'PRODUTO J', 1, TO_DATE('2023-06-01', 'YYYY-MM-DD'), 350);
 
 SELECT * FROM Produto;
+
+CREATE TABLE ProdutoPreco(
+    Id NUMBER PRIMARY KEY,
+    IdProduto NUMBER,
+    Valor NUMBER(10, 2) NOT NULL,
+    Status NUMBER(1) NOT NULL,
+    Cadastro DATE NOT NULL,
+    
+    CONSTRAINT fk_produto_preco FOREIGN KEY(IdProduto) REFERENCES Produto(Id)
+);
+
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(1, 1, 100.00, 1, TO_DATE('2023-01-01', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(2, 2, 200.00, 1, TO_DATE('2023-01-02', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(3, 3, 300.00, 1, TO_DATE('2023-01-03', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(4, 4, 400.00, 1, TO_DATE('2023-01-04', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(5, 5, 500.00, 1, TO_DATE('2023-01-05', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(6, 6, 600.00, 1, TO_DATE('2023-01-06', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(7, 7, 700.00, 1, TO_DATE('2023-01-07', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(8, 8, 800.00, 1, TO_DATE('2023-01-08', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(9, 9, 900.00, 1, TO_DATE('2023-01-09', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(10, 10, 1000.00, 1, TO_DATE('2023-01-10', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(11, 1, 1100.00, 1, TO_DATE('2023-01-11', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(12, 2, 1200.00, 1, TO_DATE('2023-01-12', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(13, 3, 1300.00, 1, TO_DATE('2023-01-13', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(14, 4, 1400.00, 1, TO_DATE('2023-01-14', 'YYYY-MM-DD'));
+INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(15, 5, 1500.00, 1, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+
+SELECT * FROM ProdutoPreco;
