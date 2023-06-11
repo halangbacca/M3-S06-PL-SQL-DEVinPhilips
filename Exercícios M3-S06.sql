@@ -52,5 +52,20 @@ INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(15, 5, 1
 SELECT * FROM ProdutoPreco;
 
 -- Exercício 3
-SELECT Produto.id, ProdutoPreco.id, Produto.descricao, ProdutoPreco.valor, TO_CHAR(ProdutoPreco.cadastro, 'MM-YYYY')
+SELECT Produto.id AS id_produto, ProdutoPreco.id AS id_produto_preco, Produto.descricao, ProdutoPreco.valor, TO_CHAR(ProdutoPreco.cadastro, 'MM-YYYY') AS data
 	FROM Produto INNER JOIN ProdutoPreco ON Produto.Id = ProdutoPreco.IdProduto;
+
+-- Exercício 4
+DECLARE 
+    soma NUMBER := 0;
+
+BEGIN
+	SELECT SUM(valor) INTO soma FROM ProdutoPreco;
+    IF soma < 150.00 THEN
+        DBMS_OUTPUT.PUT_LINE('Soma dos produtos menor que 150.00');
+    ELSIF soma < 500.00 THEN
+        DBMS_OUTPUT.PUT_LINE('Soma dos produtos está entre 150.00 e 500.00');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Soma dos produtos está acima de 500.00');
+    END IF;
+END;
