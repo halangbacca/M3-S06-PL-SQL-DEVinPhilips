@@ -1,5 +1,6 @@
 DROP TABLE Produto CASCADE CONSTRAINTS;
 
+-- Exercício 1
 CREATE TABLE Produto(
     Id NUMBER PRIMARY KEY, 
     Descricao VARCHAR2(50) NOT NULL,
@@ -21,6 +22,7 @@ INSERT INTO Produto(Id, Descricao, Status, Cadastro, QuantidadeEmEstoque) VALUES
 
 SELECT * FROM Produto;
 
+-- Exercício 2
 CREATE TABLE ProdutoPreco(
     Id NUMBER PRIMARY KEY,
     IdProduto NUMBER,
@@ -48,3 +50,7 @@ INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(14, 4, 1
 INSERT INTO ProdutoPreco(Id, IdProduto, Valor, Status, Cadastro) VALUES(15, 5, 1500.00, 1, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
 
 SELECT * FROM ProdutoPreco;
+
+-- Exercício 3
+SELECT Produto.id, ProdutoPreco.id, Produto.descricao, ProdutoPreco.valor, TO_CHAR(ProdutoPreco.cadastro, 'MM-YYYY')
+	FROM Produto INNER JOIN ProdutoPreco ON Produto.Id = ProdutoPreco.IdProduto;
