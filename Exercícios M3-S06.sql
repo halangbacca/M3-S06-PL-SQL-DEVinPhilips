@@ -61,11 +61,16 @@ DECLARE
 
 BEGIN
 	SELECT SUM(valor) INTO soma FROM ProdutoPreco;
-    IF soma < 150.00 THEN
-        DBMS_OUTPUT.PUT_LINE('Soma dos produtos menor que 150.00');
-    ELSIF soma < 500.00 THEN
-        DBMS_OUTPUT.PUT_LINE('Soma dos produtos está entre 150.00 e 500.00');
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Soma dos produtos está acima de 500.00');
-    END IF;
+	DBMS_OUTPUT.PUT_LINE('O valor da soma é de ' || soma);
+    CASE
+	    WHEN soma < 150.00 THEN
+        	DBMS_OUTPUT.PUT_LINE('Soma dos produtos menor que 150.00');
+    	WHEN soma < 500.00 THEN
+        	DBMS_OUTPUT.PUT_LINE('Soma dos produtos está entre 150.00 e 500.00');
+        ELSE
+        	DBMS_OUTPUT.PUT_LINE('Soma dos produtos está acima de 500.00');
+	END CASE;
 END;
+
+-- Exercício 5
+SELECT * FROM Produto LEFT JOIN ProdutoPreco ON Produto.Id = ProdutoPreco.IdProduto;
