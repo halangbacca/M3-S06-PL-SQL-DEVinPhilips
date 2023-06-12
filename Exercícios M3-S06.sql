@@ -1,4 +1,5 @@
 DROP TABLE Produto CASCADE CONSTRAINTS;
+DROP TABLE ProdutoPreco CASCADE CONSTRAINTS;
 
 -- Exercício 1
 CREATE TABLE Produto(
@@ -57,7 +58,7 @@ SELECT Produto.id AS id_produto, ProdutoPreco.id AS id_produto_preco, Produto.de
 
 -- Exercício 4
 DECLARE 
-    soma NUMBER := 0;
+    soma NUMBER;
 
 BEGIN
 	SELECT SUM(valor) INTO soma FROM ProdutoPreco;
@@ -74,3 +75,13 @@ END;
 
 -- Exercício 5
 SELECT * FROM Produto LEFT JOIN ProdutoPreco ON Produto.Id = ProdutoPreco.IdProduto;
+
+-- Exercício 6
+DECLARE
+	valorAtualizado NUMBER;
+
+BEGIN
+	FOR produto IN (SELECT valor FROM ProdutoPreco WHERE valor > 100 FETCH FIRST 3 ROWS ONLY) LOOP
+		valorAtualizado := produto.valor + (produto.valor * 0.15);
+	END LOOP;
+END;
