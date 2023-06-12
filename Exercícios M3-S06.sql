@@ -85,3 +85,14 @@ BEGIN
 		valorAtualizado := produto.valor + (produto.valor * 0.15);
 	END LOOP;
 END;
+
+-- Exercício 7
+BEGIN
+	FOR produto IN (SELECT Status FROM Produto) LOOP
+		IF(produto.STATUS = 1) THEN
+			DBMS_OUTPUT.PUT_LINE('Status ativo');
+		ELSE
+			DBMS_OUTPUT.PUT_LINE('Status inativo');
+		END IF;
+	END LOOP;
+END;
