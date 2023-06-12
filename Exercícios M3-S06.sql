@@ -77,14 +77,15 @@ END;
 SELECT * FROM Produto LEFT JOIN ProdutoPreco ON Produto.Id = ProdutoPreco.IdProduto;
 
 -- Exercício 6
-DECLARE
-	valorAtualizado NUMBER;
-
 BEGIN
-	FOR produto IN (SELECT valor FROM ProdutoPreco WHERE valor > 100 FETCH FIRST 3 ROWS ONLY) LOOP
-		valorAtualizado := produto.valor + (produto.valor * 0.15);
+	FOR i IN 1..3 LOOP
+		FOR produto IN (SELECT id, valor FROM ProdutoPreco WHERE valor > 100) LOOP
+			UPDATE ProdutoPreco p SET p.valor = produto.valor + (produto.valor * 0.15) WHERE p.id = produto.id;
+		END LOOP;
 	END LOOP;
 END;
+
+SELECT valor FROM ProdutoPreco;
 
 -- Exercício 7
 BEGIN
